@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+		
+		<!-- Metas -->
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+		
+		<!-- Title / Description -->
+		<title>{{ ROUTE.title }}</title>
+		<meta name="description" content="{{ ROUTE.description }}">
+		
+		<!-- JS -->
+		<script type="text/javascript" src="{{ lib }}/modernizr/modernizr.js"> </script>
+		<script type="text/javascript" src="{{ lib }}/jive/jquery.1.7.1.min.js"> </script>
+		<script type="text/javascript" src="{{ lib }}/jive/jive.min.js"> </script>
+		<link rel="stylesheet" href="{{ lib }}/jive/jive.css" type="text/css" />
+					
+		<!-- Cardinal -->
+		<link rel="stylesheet" href="{{ lib }}/cardinal/css/normalize.css" type="text/css" />
+		<link rel="stylesheet" href="{{ lib }}/cardinal/css/main.css" type="text/css" />
+		<script type="text/javascript" src="{{ lib }}/cardinal/js/plugins.js"></script>
+        <script type="text/javascript" src="{{ lib }}/cardinal/js/main.js"></script>
+		
+		<!-- Global CSS -->
+		<link rel="stylesheet" href="{{ css }}/global.css" type="text/css" />
+		
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="{{ lib }}/leaflet/leaflet.css" type="text/css" />
+		<script type="text/javascript" src="{{ lib }}/leaflet/leaflet.js"></script>
+
+		{% block head %} {% endblock %}
+		
+		<!--<script type="text/javascript">
+		
+			if(typeof(EventSource)!=="undefined") {
+				
+				alert("supported server side events");
+			  
+			} else {
+				
+			 	alert("no server side events");
+			 
+			}
+			
+		</script>-->
+
+	</head>
+
+	<body>
+		
+		{% block nav %}
+		<nav id="global"></nav>
+		{% endblock %}	
+
+		<div id="container">	
+			{% block container %}{% endblock %}
+		</div>
+
+	</body>
+	
+</html>
