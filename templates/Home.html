@@ -3,12 +3,34 @@
 {% block container %}
 <section>
 	
-	<h1>gus<br/> <i>another php</i> framework</h1>
+	<h3>gus</h3>
+	<p>The web app kickstarter</p>
 	
+	<h3>TL;DR</h3>
 	
-	<p> <b>Seriously though, gus is</b> easy to read, fun to write, and tantalizingly fast</p> 
+	<p>Building web apps sucks and we <b>needed something better</b></p>
 	
-	<h3>What's the deal man?</h3>
+	<h3>Here's the deal:</h3>
+	<ul>
+		<li>PHP driven (as in the easiest way possible)</li>
+		<li>Templated with Twig</li>
+		<li>Route-controller based, so building views is way too simple</li>
+		<li>Has All the whiz-bang js + css libs out there like bootstrap and modernizr</li>
+	</ul>
+	
+	<h3>Install that puppy</h3>
+	
+	<p><a href="https://github.com/maxatbrs/gus" target="_blank">Git It Bro!</a> and then:</p>
+	<ul>
+		<li>Update $config['app_root'] values to match your 
+		server's absolute path for the application</li>
+		<li>Make sure that templates/cache/ is writeable by apache (or the like)</li>
+		<li>Rage n3wbs</li>
+	</ul>
+	
+	<p><i>Requirements: PHP 5.2.4 + (Twig)</i></p>
+	
+	<h3>How Gus came to be</h3>
 	
 	<p>Gus was born out of frustration with the way current web apps are being built. 
 		Some are incredibly complex, robust, do-it-all systems that have a steep learning curve. 
@@ -16,14 +38,11 @@
 		start looking into the legacy google group forums dude.
 	</p>
 	
-	<h3>Gus, the underdog</h3>
-	
 	<p>Gus gets back to the roots by using a <b>traditional PHP server architecture</b> and an incredibly easy template system called 
 	<a href="http://twig.sensiolabs.org/" target="__blank">Twig</a>.
 	Additionally, Gus comes pre-packed with some industry standard client libraries like Twitter Bootstap and Modernizr, making 
 	client side development a breeze. 
 	</p>
-	
 	
 </section>
 {% endblock %}
