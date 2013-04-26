@@ -7,13 +7,46 @@
  * 
  */
 
+ 
+// For your health, dummy
+error_reporting(E_ERROR | E_WARNING | E_PARSE); 
+ 
  // Global Configuration
-$config = array();
-$config['app_root'] = "/webapps/gus"; 
-//$config['controller'] = "{$config['app_root']}/controller";
-$config['web_root'] = "http://{$_SERVER['HTTP_HOST']}/"; 
+$_CONFIG = parse_ini_file("config.ini", true);
 
-// Global Controller
-require_once  "controller/Global.php";
+// are we routing via the CLI?
+$CLI = ( isset($argv) && $argv[1] ? true : false );
+ 
+// If we aren't using the CLI
+if(!$CLI) {
 
+	// start your session fool
+	require_once "{$_CONFIG['CONTROLLER']}/Session.php"; 
+	 
+	// Require Twig Dependencies
+	require_once "{$_CONFIG['LIB']}/Twig/Autoloader.php";
+	Twig_Autoloader::register();
+	$loader = new Twig_Loader_Filesystem($_CONFIG['TEMPLATES']);
+	
+	// Build Twig object and set some environment vari	ables
+	$Twig = new Twig_Environment($loader, array(
+	    'cache' => $_CONFIG['TEMPLATES_CACHE'],
+	    'auto_reload' => true, //reload template when changes are detected
+	    'debug' => true,
+	));
+	
+	/*/
+	 * Twig Vars are variables used in templates,
+	 * 
+	 */
+	$twigVars = array();
+	
+	// cache busting for js and css dependencies 
+	$twigVars["cachebust"] = "?".date("Ymd");
+
+}
+
+// Start Handling Routes
+require_once "{$_CONFIG['CONTROLLER']}/Routing.php"; 
+ 
 ?>

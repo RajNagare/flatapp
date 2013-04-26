@@ -1,9 +1,0 @@
-<?php
-/*
- * Home Controller
- * 
- */
- 
- 
- 
-?>
