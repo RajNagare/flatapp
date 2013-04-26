@@ -20,6 +20,11 @@ $_ROUTE = str_replace("?{$_SERVER['QUERY_STRING']}","",$_ROUTE);
 if(!$_ROUTE) {
 	$_ROUTE = "Public";
 }
+
+// are we routing via the CLI?
+if( $CLI && isset($argv[1]) ) {
+	$_ROUTE = $argv[1]; 
+}
 	
 // uncomment to debug		
 //var_dump($_SERVER); die(" <hr/> URI: {$_SERVER['REQUEST_URI']}   <hr/>  Determined: $_ROUTE"); die();
