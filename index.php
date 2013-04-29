@@ -22,6 +22,9 @@ if(!$CLI) {
 
 	// start your session fool
 	require_once "{$_CONFIG['CONTROLLER']}/Session.php"; 
+	
+	// create our session
+	$Session = new Session();
 	 
 	// Require Twig Dependencies
 	require_once "{$_CONFIG['LIB']}/Twig/Autoloader.php";
