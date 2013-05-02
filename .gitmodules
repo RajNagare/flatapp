@@ -1,0 +1,3 @@
+[submodule "lib/PHPMongoRecord"]
+	path = lib/PHPMongoRecord
+	url = git@github.com:maxatbrs/PHPMongoRecord.git
