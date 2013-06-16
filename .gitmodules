@@ -1,6 +1,0 @@
-[submodule "lib/PHPMongoRecord"]
-	path = lib/PHPMongoRecord
-	url = git@github.com:maxatbrs/PHPMongoRecord.git
-[submodule "lib/jive"]
-	path = lib/jive
-	url = git@github.com:maxatbrs/JiveJS.git
