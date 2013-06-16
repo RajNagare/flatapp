@@ -4,9 +4,3 @@
 [submodule "lib/cardinal"]
 	path = lib/cardinal
 	url = git://github.com/cbracco/cardinal.git
-[submodule "lib/twig"]
-	path = lib/twig
-	url = git://github.com/cbracco/cardinal.git
-[submodule "lib/modernizr"]
-	path = lib/modernizr
-	url = git://github.com/Modernizr/Modernizr.git
