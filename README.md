@@ -23,6 +23,11 @@ Read more @ http://git-scm.com/book/en/Git-Tools-Submodules#Cloning-a-Project-wi
             allow from all
             AllowOverride All
     </Directory>
+    
+### Notes
+- Make sure logs/ and views/cache/ have a .gitignore with the following (to not track any of it's child files)
+
+    ./*
 
 # Requirements
 
