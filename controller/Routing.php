@@ -2,7 +2,11 @@
 /*
  * Routing Controller
  * 
- * This handles how routes, controllers, and templates play
+ * Try  figure out what route the user is passing
+ * If we have a controller/{$_ROUTE}.php, use it
+ * 		If we have a views/{$_ROUTE}.html, use it
+ * Else if we have inline routes if you're lazy
+ * Else 404 ya boi
  * 
  */
 
@@ -35,7 +39,7 @@ switch($_ROUTE) {
 	case "Session":
 		
 		header('HTTP/1.0 404 Not Found');
-		$routeTemplate = "404.html";
+		$routeView = "404.html";
 		
 	break;
 	
@@ -47,14 +51,19 @@ if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
 	// Include it
 	require_once "{$_CONFIG['CONTROLLER']}/$_ROUTE.php";
 	
-	// Does that controller have a template?
-	if( is_file("{$_CONFIG['TEMPLATES']}/$_ROUTE.html") ) {
+	// Does that controller have a view?
+	if( is_file("{$_CONFIG['VIEWS']}/$_ROUTE.html") ) {
 		
 		// set it
-		$routeTemplate = "$_ROUTE.html";
+		$routeView = "$_ROUTE.html";
 	
-	} 
+	} else {
+		
+		throw new Exception("[Routing Controller] Could not locate view. Looked for views/{$_ROUTE}.html");	
+		
+	}
 	
+// inline routing, where you can be lazy
 } else {
 	
 	// starting looking for a defined route
@@ -66,7 +75,7 @@ if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
 			
 			// set header
 			header('HTTP/1.0 404 Not Found');
-			$routeTemplate = "404.html";
+			$routeView = "404.html";
 			
 		break;	
 	
@@ -74,12 +83,12 @@ if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
 
 }
 
-// tell the template what route we're at
+// tell the view what route we're at
 $twigVars['ROUTE'] = $_ROUTE;
 
-// render the template and die
+// render the view and die
 die(
-	$Twig->render($routeTemplate, $twigVars)
+	$Twig->render($routeView, $twigVars)
 );
 
 

@@ -27,19 +27,19 @@ if(!$CLI) {
 	$Session = new Session();
 	 
 	// Require Twig Dependencies
-	require_once "{$_CONFIG['LIB']}/Twig/Autoloader.php";
+	require_once "{$_CONFIG['LIB']}/twig/lib/Twig/Autoloader.php";
 	Twig_Autoloader::register();
-	$loader = new Twig_Loader_Filesystem($_CONFIG['TEMPLATES']);
+	$loader = new Twig_Loader_Filesystem($_CONFIG['VIEWS']);
 	
 	// Build Twig object and set some environment vari	ables
 	$Twig = new Twig_Environment($loader, array(
-	    'cache' => $_CONFIG['TEMPLATES_CACHE'],
-	    'auto_reload' => true, //reload template when changes are detected
+	    'cache' => $_CONFIG['VIEWS_CACHE'],
+	    'auto_reload' => true, //reload views when changes are detected
 	    'debug' => true,
 	));
 	
 	/*/
-	 * Twig Vars are variables used in templates,
+	 * Twig Vars are variables used in views,
 	 * 
 	 */
 	$twigVars = array();
