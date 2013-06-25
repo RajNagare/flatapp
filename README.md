@@ -19,7 +19,7 @@ Read more @ http://git-scm.com/book/en/Git-Tools-Submodules#Cloning-a-Project-wi
 
     DirectoryIndex index.php
         <Directory /path/to/my/project>
-            Options -Indexes IncludesNOEXEC FollowSymLinks
+            Options +Indexes IncludesNOEXEC FollowSymLinks
             allow from all
             AllowOverride All
     </Directory>
