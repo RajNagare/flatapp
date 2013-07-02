@@ -16,6 +16,10 @@ $_CONFIG = parse_ini_file("config.ini", true);
 
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
+
+// Mysql lib wrapper (in progress)
+//require_once("{$_CONFIG['LIB']}/MySQL-PHP-Wrapper/DB.php");
+//require_once("{$_CONFIG['LIB']}/MySQL-PHP-Wrapper/Record.php");
  
 // If we aren't using the CLI
 if(!$CLI) {

@@ -244,4 +244,20 @@ class Animal extends Record {
 	
 }
 
+// this gets animal with id 1 and returns the record object
+$Animal = new Animal(1);
+
+// see it
+var_dump($Animal); 
+
+// get a mysqli result object using find
+$allAnimals = $Animal->find("*","id < 3");
+
+// loop through the mysqli object like a boss 
+while($animal = $allAnimals->fetch_object() ){
+	 
+    echo "#{$animal->id} {$animal->name}<br/>";
+	
+} 
+
 ?>
