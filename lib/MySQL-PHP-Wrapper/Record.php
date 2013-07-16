@@ -41,6 +41,22 @@ class Record {
 		
 	} 
 	
+	public function setProperties($properties) {
+		
+		// assign values to this object
+		foreach($properties as $property => $value) {
+			
+			$this->{$property} = $value;
+		}
+		 
+	}
+	
+	public function getProperties() {
+		
+		return get_object_vars($this);
+			
+	}
+	
 	// set our table
 	public function setTable($table) {
 		
@@ -75,71 +91,110 @@ class Record {
 		
 	}
 	
-	// Returns a specific row by ID 
-	public function get($id) {
-		
-		// make sure we have a table
-		if( !$id || !is_int($id) )  {
-			throw new Exception("Record->get() requires (int) \$id but not supplied!");	
-		}
-		
-		// did we pass an id? 
-		if($id) {
-			$this->id = $id;
-		}
-		
-		$result = $this->find("*"," id = {$this->id} LIMIT 1");
-
-		if($result->nuw_rows===0) {
-			
-			return $result;
-			
-		} else {
-
-			return $result->fetch_object();
-			
-		}
-	
-	}
 	
 	// Call to database and assign values to this object
 	public function instantiate($id) {
 		
+		// make sure we have a table
+		if(!$id)  {
+			throw new Exception("Record->instantiate() requires (int) \$id but not supplied!");	
+		} else {
+		// set the id
+			$this->id = (int)$id;
+		}
+		
+		// find this record by id
+		$result = $this->find("*"," id = {$this->id} LIMIT 1");
+
 		// take the values from get
-		$values = $this->get($id);
+		$values = $result->fetch_object();
 		
 		// did we get values
 		if($values) {
 				
-			// assign values to this object
-			foreach($values as $k => $value) {
-				
-				$this->{$k} = $value;
-			}
+			// set our properties
+			$this->setProperties($values);
 			
 		// we didn't get any values	
 		} else {
 				
 			// sorry bro
-			throw new Exception("Record->get() failed to find row with id = {$this->id}");	
+			throw new Exception("Record->instantiate() failed to fetch row with id = {$this->id}");	
 			
 		}
 		
 	}
 	
+	// update database with the object's properties
 	function update() {
 		
-		var_dump($this->values);
+		// global db
+		global $DB;
+		
+		// is this object instantiated?
+		if(empty($this->id)) {
+			throw new Exception("Record->update() requires that the record is instantiated and has an \$id property set");	
+		}
+		
+		// build the query
+		$query = "UPDATE {$this->table} SET ";
+		
+		// get properties and a count
+		$properties = $this->getProperties();
+		$propertiesCount = count($properties);
+		
+		// counter for building the query string
+		$queryCounter = 0;
+		
+		// loop through properties
+		foreach($properties as $property => $value) {
+			
+			// check what properties we are accessing
+			switch($property) {
+						
+				// skip these properties and decrement property count
+				case "id":
+				case "table": 
+					$propertiesCount--;
+				break; 	
+				
+				// otherwise start building query string
+				default:
+					
+					// column and value assignment
+					$query .= "{$property} = '{$value}' ";	
+			
+					// increment query counter
+					$queryCounter++;
+					
+					// check to see if we should append a comma to the query string
+					if( $propertiesCount > 1
+					&&  $propertiesCount > $queryCounter) {
+						$query .= ",";	
+					}
+				
+				break;
+				
+			}				
+			
+		}
+			
+		// where this object id is the key
+		$query .= " WHERE id = {$this->id};";
+		
+		//die($query);
+		
+		// dat query
+		return $DB->Q("$query");
 		
 	}
 	
 	
-	// create a record
-	/*public function create($values) {
+	/*public function insert($values) {
 		
 		// did we not get an array?
 		if(!$values || !is_array($values)) {
-			throw new Exception("Record->create() requires $values to be passed as an array but was not.");	
+			throw new Exception("Record->insert() requires $values to be passed as an array but was not.");	
 		}
 		
 		// make the insert
@@ -160,6 +215,7 @@ class Record {
 		}
 		
 	}
+	
 	
 	// update a record
 	public function update($query = NULL, $values = NULL,$options = array()) {
@@ -247,17 +303,30 @@ class Animal extends Record {
 // this gets animal with id 1 and returns the record object
 $Animal = new Animal(1);
 
-// see it
-var_dump($Animal); 
+echo "#{$Animal->id} {$Animal->name}<br/>";
+$Animal->name = "Max";
+echo "#{$Animal->id} {$Animal->name}<br/>";
+
+$Animal->update();
+echo "#{$Animal->id} {$Animal->name}<br/>";
 
 // get a mysqli result object using find
-$allAnimals = $Animal->find("*","id < 3");
+/*$allAnimals = $Animal->find("*","id");
 
 // loop through the mysqli object like a boss 
 while($animal = $allAnimals->fetch_object() ){
-	 
-    echo "#{$animal->id} {$animal->name}<br/>";
 	
-} 
+	$test = new Animal($animal->id);
+	echo "#{$test->id} {$test->name} / {$animal->name}<br/>";
+	//$test->name = "test".rand(1,100);
+	echo "#{$test->id} {$test->name} / {$animal->name}<br/>";
+	$test->update();
+	 
+    echo "#{$test->id} {$test->name} / {$animal->name}<br/>";
+	echo "<hr/>";
+	
+} */
+
+die();
 
 ?>
