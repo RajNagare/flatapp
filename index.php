@@ -5,6 +5,9 @@
  * Welcome to the index file! Here you will find 
  * application globals configs and dependencies.
  * 
+ *  1) Go upate config.ini for correct application paths
+ *  2) Make sure log/ and cache/ are apache writable
+ * 
  */
 
  
@@ -21,7 +24,7 @@ require_once "{$_CONFIG['CONTROLLER']}/Session.php";
 $Session = new Session();
  
 // Require Twig Dependencies
-require_once "{$_CONFIG['LIB']}/twig/lib/Twig/Autoloader.php";
+require_once "{$_CONFIG['LIBRARY']}/twig/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem($_CONFIG['VIEWS']);
 

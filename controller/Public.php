@@ -6,6 +6,8 @@
  * 
  */
  
+$twigVars["title"] = "Gus" ;
+$twigVars["description"] = "This is the pages description" ;
   
 $twigVars["gusDescription"] = "web app framework for rapid prototyping";
  
