@@ -1,9 +1,0 @@
-[submodule "lib/jivejs"]
-	path = lib/jivejs
-	url = git://github.com/maxatbrs/JiveJS.git
-[submodule "lib/cardinal"]
-	path = lib/cardinal
-	url = git://github.com/cbracco/cardinal.git
-[submodule "lib/twig"]
-	path = lib/twig
-	url = git://github.com/fabpot/Twig.git

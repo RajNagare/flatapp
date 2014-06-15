@@ -1,44 +1,39 @@
 body {
 	font-family:Arial;
-	background:#151515;
-	color:#FFF;
-	font-size:0.75rem;
 
+	font-size:0.75rem;
+}
+
+.Error404 {
+	text-align: center;
 }
 
 section{
 	padding:2rem;
 }
 
-h1,h2,h3 {
-	color:#FFF;
-	margin:1rem 0rem;
-}
-
 span {
 	color:#39c;
 }
 
-a,
-a:visited {
-	color:#F90;
+section h1 {
+	margin:0;
+	padding:0;
+	font-size:2rem;
 }
 
-a.button {
-	background:#F90;
-	color:#FFF;	
+section {
+	border-top:1px dashed #EEE;
+	border-bottom:1px dashed #EEE;
 }
 
-a.large.button {
-	background:#39c;
-	border-bottom:10px solid #17A;
+section + section {
+	border-top:none;
 }
+
 
 div.grid {
-	background:#FFF;
-	color:#666;
-	margin:0;
-	padding:3rem 1rem; 
+	padding:2rem; 
 }
 
 div.grid h3 {

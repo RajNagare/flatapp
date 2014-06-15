@@ -7,6 +7,6 @@
  */
  
   
-$twigVars["hello_world"] = "Hello world, this is gus!";
+$twigVars["gusDescription"] = "web app framework for rapid prototyping";
  
 ?>

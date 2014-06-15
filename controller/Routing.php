@@ -25,11 +25,6 @@ if(!$_ROUTE) {
 	$_ROUTE = "Public";
 }
 
-// are we routing via the CLI?
-if( $CLI && isset($argv[1]) ) {
-	$_ROUTE = $argv[1]; 
-}
-	
 // uncomment to debug		
 //var_dump($_SERVER); die(" <hr/> URI: {$_SERVER['REQUEST_URI']}   <hr/>  Determined: $_ROUTE"); die();
 
@@ -45,41 +40,26 @@ switch($_ROUTE) {
 	
 }
 
-// Does that controller exist?
-if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
+// Does that View exist?
+if( is_file("{$_CONFIG['VIEWS']}/$_ROUTE.html") ) {
 	
-	// Include it
-	require_once "{$_CONFIG['CONTROLLER']}/$_ROUTE.php";
+	// set the route view
+	$routeView = "$_ROUTE.html";
 	
-	// Does that controller have a view?
-	if( is_file("{$_CONFIG['VIEWS']}/$_ROUTE.html") ) {
+	// Does that view have a controller?
+	if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
 		
-		// set it
-		$routeView = "$_ROUTE.html";
+		// Include it
+		require_once "{$_CONFIG['CONTROLLER']}/$_ROUTE.php";
 	
-	} else {
-		
-		throw new Exception("[Routing Controller] Could not locate view. Looked for views/{$_ROUTE}.html");	
-		
-	}
+	} 
 	
-// inline routing, where you can be lazy
 } else {
-	
-	// starting looking for a defined route
-	switch($_ROUTE) {
-		
-			
-		// didn't find that, sorry bro > 404
-		default:
-			
-			// set header
-			header('HTTP/1.0 404 Not Found');
-			$routeView = "404.html";
-			
-		break;	
-	
-	}
+// didn't find that, sorry bro 
+
+	// send 404
+	header('HTTP/1.0 404 Not Found');
+	$routeView = "404.html";
 
 }
 
@@ -90,6 +70,5 @@ $twigVars['ROUTE'] = $_ROUTE;
 die(
 	$Twig->render($routeView, $twigVars)
 );
-
 
 ?>

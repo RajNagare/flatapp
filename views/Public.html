@@ -4,41 +4,42 @@
 
 <section>
 	
-	<h1>Gus is a <span>web app framework for rapid prototyping</span>. Built on a simple route > controller > view 
+	<!-- Look in the Public controller for $gusDescription variable example -->
+	<h1>Gus is a <span>{{ gusDescription }}</span>. Built on a simple route > controller > view 
 	architecture, applications built with Gus can be scaled without being re-written.</h1>
 	
 </section>
 
 <div class="grid">
 	
-	<div class="grid-item lap-one_half">
+	<div class="grid-item medium-one-half">
 		
 		<p>Gus is a simple, vanilla PHP stack that requires no database and has all the tools you need
 		to get your application started. The goal was to have a platform that made it easy to
 		crank out web apps.</p>
 	
-		<a class="button large rounded lap-one_whole" href="https://github.com/maxatbrs/gus" target="_blank">Install That Puppy</a>
+		<a class="button button-primary" href="https://github.com/maxatbrs/gus" target="_blank">Install That Puppy</a>
 		
 	</div>
 	
-	<div class="grid-item lap-one_half">
+	<div class="grid-item medium-one-half">
 		
 		<p>Gus gets you going fast by making setup a breeze and having common
 		dependecies already included: </p>
 	
 		<ul>
 			<li>Templating by 
-				<a class="button chunky  rounded" href="http://twig.sensiolabs.org/" target="_blank">Twig</a>
+				<a class="button" href="http://twig.sensiolabs.org/" target="_blank">Twig</a>
 			</li>
 			<li>UI Development by
-				<a class="button chunky  rounded" href="http://www.jquery.com/" target="_blank">jQuery</a> and
-				<a class="button chunky  rounded" href="http://www.jivejs.com/" target="_blank">JiveJS</a>
+				<a class="button" href="http://www.jquery.com/" target="_blank">jQuery</a> and
+				<a class="button" href="http://www.jivejs.com/" target="_blank">JiveJS</a>
 			</li>
 			<li>Responsive UI by 
-				<a class="button chunky  rounded" href="http://www.cardinalcss.com/" target="_blank">CardinalCSS</a>
+				<a class="button" href="http://www.cardinalcss.com/" target="_blank">CardinalCSS</a>
 			</li>
 			<li>HTML 5 Feature Detection by  
-				<a class="button chunky  rounded" href="http://www.modernizr.com/" target="_blank">Modernizr</a>
+				<a class="button" href="http://www.modernizr.com/" target="_blank">Modernizr</a>
 			</li>
 		
 		</ul>
@@ -59,7 +60,7 @@ handled by a <span>controller</span>. The controller display data on template or
 	
 	<div class="grid-item lap-one_third">
 		
-		<h3>How It Works</h3>
+		<h4>How It Works</h4>
 		
 		<p>Every request to Gus goes to the <i>Routing Controller</i>. Here, the application searches the <i>controller/</i> 
 		directory, trying to match a PHP file by filename with the supplied route.</p>
@@ -75,9 +76,9 @@ handled by a <span>controller</span>. The controller display data on template or
 		<table class="table">	
 	
 			<tr>
-				<th><h3>Route</h3></th>
-				<th><h3>Controller</h3></th>
-				<th><h3>View</h3></th>
+				<th><h4>Route</h4></th>
+				<th><h4>Controller</h4></th>
+				<th><h4>View</h4></th>
 			</tr>
 			
 			<tr>
@@ -115,21 +116,21 @@ handled by a <span>controller</span>. The controller display data on template or
 <div class="grid">
 	
 	<div class="grid-item lap-one_third">
-		<h3>Libraries</h3>
+		<h4>Libraries</h4>
 		<p>The <i>/lib</i> directory is where all 3rd party libraries go. 
 		If you want to integrate things like database object interaction, mailer wrappers, or other projects, 
 		this is the place to do it.</p>
 	</div>
 	
 	<div class="grid-item lap-one_third">
-		<h3>Git Submodules</h3>
+		<h4>Git Submodules</h4>
 		<p>Instead of downloading tarballs, you can use <a href="http://git-scm.com/book/en/Git-Tools-Submodules" target="_blank">git submodules</a> to add a package managment-like 
 		experience for maintaining your libaries.</p>
 		
 	</div>
 	
 	<div class="grid-item lap-one_third">
-		<h3>Keep only what you want</h3>
+		<h4>Keep only what you want</h4>
 		<p>Prefer vinylbowl.js over ironicglasses.js? You're not locked into any library, so customize
 			at your will.</p>
 	</div>
@@ -145,7 +146,7 @@ handled by a <span>controller</span>. The controller display data on template or
 <div class="grid">
 	
 	<div class="grid-item lap-one_third">
-		<h3>Update The Config</h3>
+		<h4>Update The Config</h4>
 		<p>Update <i>config.ini</i> in the applications root directory to match your server's 
 		absolute path for the application. Feel free to use this config file for other things too.
 		We use INI files for configs, so learn more about it
@@ -153,12 +154,12 @@ handled by a <span>controller</span>. The controller display data on template or
 	</div>
 	
 	<div class="grid-item lap-one_third">
-		<h3>Permissions for View Cache</h3>
+		<h4>Permissions for View Cache</h4>
 		<p>Make sure that <span>views/cache/</span> is writeable by apache (or the like).</p>
 	</div>
 	
 	<div class="grid-item lap-one_third">
-		<h3>VHOST Block / HTAccess Setup</h3>
+		<h4>VHOST Block / HTAccess Setup</h4>
 		<p>Make sure .htaccess is in the application root directory. Apache vhost blocks also need to be correctly 
 		configured to use mod_rewrites on a vhost block level.</p>
 	</div>
