@@ -3,19 +3,30 @@ gus
 
 The web app kickstarter
 
-# Install Gus
+# Install Gus With Github
+
+You can clone gus into your project by doing the following:
 
 `git clone git://github.com/maxatbrs/gus.git /path/to/your/project`
 
 `cd /path/to/your/project`
 
-`git submodule init`
+# Install Gus With Zip
 
-`git submodule update`
+Downlaod and unzip gus into your project by doing the following:
 
-Read more @ http://git-scm.com/book/en/Git-Tools-Submodules#Cloning-a-Project-with-Submodules
+`wget https://github.com/maxatbrs/gus/archive/master.zip`
+
+`unzip master`
+
+`rm master`
+
+`mv gus-master/ /path/to/your/project`
+
+`cd /path/to/your/project`
 
 ## Configuration
+Make sure to add this to your apache VHOST block configuration and restart the server
 
     DirectoryIndex index.php
     <Directory /path/to/my/project>
