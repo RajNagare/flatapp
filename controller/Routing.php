@@ -41,16 +41,16 @@ switch($_ROUTE) {
 }
 
 // Does that View exist?
-if( is_file("{$_CONFIG['VIEWS']}/$_ROUTE.html") ) {
+if( is_file( VIEWS_PATH . "/$_ROUTE.html" ) ) {
 	
 	// set the route view
 	$routeView = "$_ROUTE.html";
 	
 	// Does that view have a controller?
-	if( is_file("{$_CONFIG['CONTROLLER']}/$_ROUTE.php") ) {
+	if( is_file( CONTROLLER_PATH . "/$_ROUTE.php" ) ) {
 		
 		// Include it
-		require_once "{$_CONFIG['CONTROLLER']}/$_ROUTE.php";
+		require_once CONTROLLER_PATH . "/$_ROUTE.php";
 	
 	} 
 	

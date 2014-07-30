@@ -14,23 +14,27 @@
 // For your health, dummy
 error_reporting(E_ERROR | E_WARNING | E_PARSE); 
  
- // Global Configuration
-$_CONFIG = parse_ini_file("config.ini", true);
+// Paths
+define('ROOT_PATH', getcwd() );
+define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
+define('LIBRARY_PATH', ROOT_PATH . "/library" );
+define('VIEWS_PATH', ROOT_PATH . "/views" );
+define('VIEWS_CACHE_PATH', VIEWS_PATH . "/cache" );
 
 // start your session fool
-require_once "{$_CONFIG['CONTROLLER']}/Session.php"; 
+require_once CONTROLLER_PATH . "/Session.php"; 
 
 // create our session
 $Session = new Session();
  
 // Require Twig Dependencies
-require_once "{$_CONFIG['LIBRARY']}/twig/lib/Twig/Autoloader.php";
+require_once LIBRARY_PATH . "/twig/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
-$loader = new Twig_Loader_Filesystem($_CONFIG['VIEWS']);
+$loader = new Twig_Loader_Filesystem(VIEWS_PATH);
 
 // Build Twig object and set some environment vari	ables
 $Twig = new Twig_Environment($loader, array(
-    'cache' => $_CONFIG['VIEWS_CACHE'],
+    'cache' => VIEWS_CACHE_PATH,
     'auto_reload' => true, //reload views when changes are detected
     'debug' => true,
 ));
@@ -45,6 +49,6 @@ $twigVars = array();
 $twigVars["cachebust"] = "?".date("Ymd");
 
 // Start Handling Routes
-require_once "{$_CONFIG['CONTROLLER']}/Routing.php"; 
+require_once CONTROLLER_PATH . "/Routing.php"; 
  
 ?>
