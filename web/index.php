@@ -5,27 +5,44 @@
  * Welcome to the index file! Here you will find 
  * application globals configs and dependencies.
  * 
- *  1) Go upate config.ini for correct application paths
- *  2) Make sure log/ and cache/ are apache writable
+ * !! Make sure app/log/ and app/cache/ are apache writable
  * 
- */
+*/
 
- 
-// For your health, dummy
 error_reporting(E_ERROR | E_WARNING | E_PARSE); 
  
+// are we routing via the CLI?
+$CLI = ( isset($argv) && $argv[1] ? true : false );
+
+if($CLI) {
+	
+	// allow us to 
+	define('ROOT_PATH', $argv[1] );
+	define('APP_PATH', "../app" );
+	
+} else {
+	
+	// Set Root and App path
+	define('ROOT_PATH', getcwd() );
+	define('APP_PATH', "../app" );
+	
+}
+ 
 // Paths
-define('ROOT_PATH', getcwd() );
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
 define('LIBRARY_PATH', ROOT_PATH . "/library" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
-define('VIEWS_CACHE_PATH', VIEWS_PATH . "/cache" );
+define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
 
-// start your session fool
-require_once CONTROLLER_PATH . "/Session.php"; 
+if(!$CLI) {
+	
+	// Require Session
+	require_once CONTROLLER_PATH . "/Session.php"; 
+	
+	// create our session
+	$Session = new Session();
 
-// create our session
-$Session = new Session();
+}
  
 // Require Twig Dependencies
 require_once LIBRARY_PATH . "/twig/lib/Twig/Autoloader.php";

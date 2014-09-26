@@ -2,14 +2,13 @@
 /*
  * Routing Controller
  * 
- * Try  figure out what route the user is passing
+ * Try figure out what route the user is passing
  * If we have a controller/{$_ROUTE}.php, use it
  * 		If we have a views/{$_ROUTE}.html, use it
  * Else if we have inline routes if you're lazy
  * Else 404 ya boi
  * 
  */
-
 
 // grab path from script
 $web_app_suffix = str_replace("/index.php" ,"",$_SERVER['SCRIPT_NAME']);
@@ -23,6 +22,11 @@ $_ROUTE = str_replace("?{$_SERVER['QUERY_STRING']}","",$_ROUTE);
 // if no route is passed, make it the public one
 if(!$_ROUTE) {
 	$_ROUTE = "Public";
+}
+
+// If we are using the CLI, we pass the route manually
+if($CLI) {
+	$_ROUTE = $argv[2];
 }
 
 // uncomment to debug		
