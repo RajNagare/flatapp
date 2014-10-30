@@ -19,7 +19,7 @@ fi
 BuildLog="$BuildDirectory/build.log";
 
 # Views
-Views=web/views/*.html
+Views=src/views/*.html
 ViewManifest="$BuildDirectory/viewManifest.txt";
 
 # CLI Display
@@ -61,7 +61,7 @@ do
 done
 
 # Clean up the manifest
-sed -i 's/web\/views\///g' $ViewManifest;
+sed -i 's/src\/views\///g' $ViewManifest;
 sed -i 's/\.html//g' $ViewManifest;
 
 echo "Rendering Views..."; echo "";
@@ -75,7 +75,7 @@ while read viewName; do
 	echo "$viewName" >> $BuildLog;
 	
 	# Rendering with PHP (twig)
-	php web/index.php $(pwd)/web $viewName > $BuildDirectory/$viewName.html
+	php src/index.php $(pwd)/src $viewName > $BuildDirectory/$viewName.html
 	
 	# TODO FIXME
 	# Update links to point to local html files
@@ -102,22 +102,22 @@ done <$ViewManifest
 
 # Copy CSS
 echo "Duplicating CSS..."; echo "";
-rsync -qav --exclude=".git/*" web/css/ $BuildDirectory/css/;
+rsync -qav --exclude=".git/*" src/css/ $BuildDirectory/css/;
 
 #Update CSS links to be local
 sed -i "s/url('\/img/url('\.\.\/img/g" $BuildDirectory/css/*.css;
 
 # Copy JS
 echo "Duplicating JS..."; echo "";
-rsync -qav --exclude=".git/*" web/js/ $BuildDirectory/js/;
+rsync -qav --exclude=".git/*" src/js/ $BuildDirectory/js/;
 
 # Copy Image
 echo "Duplicating Images..."; echo "";
-rsync -qav --exclude=".git/*" web/img/ $BuildDirectory/img/;
+rsync -qav --exclude=".git/*" src/img/ $BuildDirectory/img/;
 
 # Copy Libs
 echo "Duplicating libaraies..."; echo "";
-rsync -qav --exclude=".git/*" --exclude="twig/" web/library/ $BuildDirectory/library/;
+rsync -qav --exclude=".git/*" --exclude="twig/" src/library/ $BuildDirectory/library/;
 
 echo "Build generated at $BuildDirectory";
 
@@ -134,7 +134,7 @@ if [ "$2" == "deploy" ]; then
 
 	echo -e "${footer}";
 	echo "••••••••••••••••••••••••••••••••••••••••••••";
-	echo "Build deployed to web!";
+	echo "Build deployed $BuildDirectory > web/!";
 	echo -e "••••••••••••••••••••••••••••••••••••••••••••${resetColor}";
 
 fi
