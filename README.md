@@ -5,13 +5,10 @@ A prototyping and deployment harness for web applications.
 
 The goal of GUS is simple - make prototyping and deploying web applications easy. 
 
-Develop the app using server side technologies so you don't have to re-invent the wheel. 
-
-Generate an HTML "build" containing the basics of a web app - HTML, CSS, Javascript, and images.
-
-Deploy to your local host, ZIP file or send it to another environment.
-
-PROFIT
+ - Develop the app using server side technologies so you don't have to re-invent the wheel. 
+ - Generate an HTML "build" containing the basics of a web app - HTML, CSS, Javascript, and images.
+ - Deploy to your local host, ZIP file or send it to another environment.
+ - PROFIT
 
 ## How to Build and Deploy
 
