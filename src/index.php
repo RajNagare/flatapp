@@ -49,7 +49,7 @@ require_once LIBRARY_PATH . "/twig/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(VIEWS_PATH);
 
-// Build Twig object and set some environment vari	ables
+// Build Twig object and set some environment variables
 $Twig = new Twig_Environment($loader, array(
     'cache' => VIEWS_CACHE_PATH,
     'auto_reload' => true, //reload views when changes are detected

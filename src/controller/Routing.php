@@ -21,7 +21,7 @@ $_ROUTE = str_replace("?{$_SERVER['QUERY_STRING']}","",$_ROUTE);
 
 // if no route is passed, make it the public one
 if(!$_ROUTE) {
-	$_ROUTE = "Public";
+	$_ROUTE = "index";
 }
 
 // If we are using the CLI, we pass the route manually
