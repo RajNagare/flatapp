@@ -1,0 +1,22 @@
+<nav id="global">
+		        
+	<a class="block" data-block="jumbotron"><i class="fa fa-2x fa-cube"></i> Hero</a>
+	<a class="block" data-block="tumblr"><i class="fa fa-2x fa-tumblr"></i> Tumblr</a>
+	<a class="block" data-block="youtube"><i class="fa fa-2x fa-youtube"></i> Youtube</a>
+	<a class="block" data-block="instagram"><i class="fa fa-2x fa-instagram"></i> Instagram</a>
+
+</nav>
+
+<div id="block-templates">
+
+	{% include "Jumbotron.html" %}
+
+	{% include "Tumblr.html" %}
+
+	{% include "Youtube.html" %}
+
+	{% include "Instagram.html" %}
+	
+</div>
+
+<script type="text/javascript" src="/js/example.js{{ cachebust }}"> </script>

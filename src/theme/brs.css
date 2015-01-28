@@ -1,0 +1,13 @@
+/* Global CSS 
+ * 
+ * Application wide styles
+ *
+*/
+
+body {
+    background:#000;	
+}
+
+body * {
+    color:#FFF;
+}

@@ -14,38 +14,15 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
 
-// we are using the CLI
-if($CLI) {
-	
-	// allow us to 
-	define('ROOT_PATH', $argv[1] );
-	define('APP_PATH', "../app" );
-	
-// accessing via HTTP requrest 
-} else {
-	
-	// Set Root and App path
-	define('ROOT_PATH', getcwd() );
-	define('APP_PATH', "../app" );
-	
-}
- 
+// Set Root and App path
+define('ROOT_PATH', getcwd() );
+define('APP_PATH', "../app" );
+
 // Paths
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
 define('LIBRARY_PATH', ROOT_PATH . "/library" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
 define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
-
-// if we aren't on the CLI
-if(!$CLI) {
-	
-	// Require Session
-	require_once CONTROLLER_PATH . "/Session.php"; 
-	
-	// create our session
-	$Session = new Session();
-
-}
  
 // Require Twig Dependencies
 require_once LIBRARY_PATH . "/twig/lib/Twig/Autoloader.php";
@@ -64,6 +41,8 @@ $Twig = new Twig_Environment($loader, array(
  * 
  */
 $twigVars = array();
+
+$twigVars["theme"] = "default";
 
 // cache busting for js and css dependencies 
 $twigVars["cachebust"] = "?".date("Ymd");

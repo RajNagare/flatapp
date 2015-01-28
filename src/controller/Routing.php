@@ -32,18 +32,6 @@ if($CLI) {
 // uncomment to debug		
 //var_dump($_SERVER); die(" <hr/> URI: {$_SERVER['REQUEST_URI']}   <hr/>  Determined: $_ROUTE"); die();
 
-// do not route to these
-switch($_ROUTE) {
-	
-	case "Session":
-		
-		header('HTTP/1.0 404 Not Found');
-		$routeView = "404.html";
-		
-	break;
-	
-}
-
 // Does that View exist?
 if( is_file( VIEWS_PATH . "/$_ROUTE.html" ) ) {
 	
