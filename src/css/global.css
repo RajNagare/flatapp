@@ -17,6 +17,11 @@ body {
 	
 }
 
+/* Content Block */
+.block-content {
+    padding:2rem 0;
+}
+
 .block-splash {
     width:100%;
     height: 300px;
@@ -31,4 +36,9 @@ body {
 
 .block-splash .btn {
     margin-top:2rem;
-}å
+}
+
+/* Youtube */
+.block-youtube iframe {
+    height: 400px;
+}
