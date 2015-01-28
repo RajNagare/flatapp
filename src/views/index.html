@@ -2,168 +2,24 @@
 
 {% block container %}
 
-<section>
-	
-	<!-- Look in the Public controller for $gusDescription variable example -->
-	<h1>Gus is a <span>{{ gusDescription }}</span>. Built on a simple route > controller > view 
-	architecture, applications built with Gus can be scaled without being re-written.</h1>
-	
-</section>
+<div class="block-target wrapper">
 
-<div class="grid">
-	
-	<div class="grid-item medium-one-half">
-		
-		<p>Gus is a simple, vanilla PHP stack that requires no database and has all the tools you need
-		to get your application started. The goal was to have a platform that made it easy to
-		crank out web apps.</p>
-	
-		<a class="button button-primary" href="https://github.com/maxatbrs/gus" target="_blank">Install That Puppy</a>
-		
-	</div>
-	
-	<div class="grid-item medium-one-half">
-		
-		<p>Gus gets you going fast by making setup a breeze and having common
-		dependecies already included: </p>
-	
-		<ul>
-			<li>Templating by 
-				<a class="button" href="http://twig.sensiolabs.org/" target="_blank">Twig</a>
-			</li>
-			<li>UI Development by
-				<a class="button" href="http://www.jquery.com/" target="_blank">jQuery</a> and
-				<a class="button" href="http://www.jivejs.com/" target="_blank">JiveJS</a>
-			</li>
-			<li>Responsive UI by 
-				<a class="button" href="http://www.cardinalcss.com/" target="_blank">CardinalCSS</a>
-			</li>
-			<li>HTML 5 Feature Detection by  
-				<a class="button" href="http://www.modernizr.com/" target="_blank">Modernizr</a>
-			</li>
-		
-		</ul>
-					
-	</div>
-	
-</div>	
-
-
-<section>
-	
-<h1>Users visit web apps by a URL or a<span> route</span>. Each route has route-specific logic which is 
-handled by a <span>controller</span>. The controller display data on template or a <span>view</span>.</h1>
-
-</section>
-
-<div id="" class="grid">
-	
-	<div class="grid-item lap-one_third">
-		
-		<h4>How It Works</h4>
-		
-		<p>Every request to Gus goes to the <i>Routing Controller</i>. Here, the application searches the <i>controller/</i> 
-		directory, trying to match a PHP file by filename with the supplied route.</p>
-		
-		<p>Gus askes: Does <span>controller/{route}.php</span> exist? If so, that is our route. If not, display a 404</p>
-		
-		<p>If the controller exists, Gus looks in the <i>views/</i> directory for a similarly named HTML file like so: <span>views/{route}.html</span></p> 
-
-	</div>
-	
-	<div class="grid-item lap-two_thirds">
-		
-		<table class="table">	
-	
-			<tr>
-				<th><h4>Route</h4></th>
-				<th><h4>Controller</h4></th>
-				<th><h4>View</h4></th>
-			</tr>
-			
-			<tr>
-				<td>/about</td>
-				<td>controllers/about.php</td>
-				<td>views/about.html</td>
-			</tr>
-			
-			<tr>
-				<td>/dashboard</td>
-				<td>controllers/dashboard.php</td>
-				<td>views/dashboard.html</td>
-			</tr>
-			
-			<tr>
-				<td>/</td>
-				<td>controllers/Public.php</td>
-				<td>views/Public.html</td>
-			</tr>
-		
-						
-		</table>
-		
-	</div>
-	
 </div>
 
-<section>
-	
-	<h1>jQuery, JiveJS, Cardinal CSS, Modernizr, and Twig included in every application. Easily keep them up to date or 
-	add new ones through git submodules.</h1>
-	
-</section>
+<div class="row">
 
-<div class="grid">
-	
-	<div class="grid-item lap-one_third">
-		<h4>Libraries</h4>
-		<p>The <i>/lib</i> directory is where all 3rd party libraries go. 
-		If you want to integrate things like database object interaction, mailer wrappers, or other projects, 
-		this is the place to do it.</p>
-	</div>
-	
-	<div class="grid-item lap-one_third">
-		<h4>Git Submodules</h4>
-		<p>Instead of downloading tarballs, you can use <a href="http://git-scm.com/book/en/Git-Tools-Submodules" target="_blank">git submodules</a> to add a package managment-like 
-		experience for maintaining your libaries.</p>
-		
-	</div>
-	
-	<div class="grid-item lap-one_third">
-		<h4>Keep only what you want</h4>
-		<p>Prefer vinylbowl.js over ironicglasses.js? You're not locked into any library, so customize
-			at your will.</p>
-	</div>
-	
+	<div class='col-xs-4 block-target'>
+	left
+	</div>	
+
+	<div class='col-xs-4 block-target'>
+	center
+	</div>	
+
+	<div class='col-xs-4 block-target'>
+	right
+	</div>	
+
 </div>
 
-<section>
-	
-	<h1>Installation should be a breeze</h1>
-	
-</section>
-
-<div class="grid">
-	
-	<div class="grid-item lap-one_third">
-		<h4>Update The Config</h4>
-		<p>Update <i>config.ini</i> in the applications root directory to match your server's 
-		absolute path for the application. Feel free to use this config file for other things too.
-		We use INI files for configs, so learn more about it
-		<a href="http://php.net/manual/en/function.parse-ini-file.php" target="_blank">@phpnet's ini parsing page.</a></p>
-	</div>
-	
-	<div class="grid-item lap-one_third">
-		<h4>Permissions for View Cache</h4>
-		<p>Make sure that <span>views/cache/</span> is writeable by apache (or the like).</p>
-	</div>
-	
-	<div class="grid-item lap-one_third">
-		<h4>VHOST Block / HTAccess Setup</h4>
-		<p>Make sure .htaccess is in the application root directory. Apache vhost blocks also need to be correctly 
-		configured to use mod_rewrites on a vhost block level.</p>
-	</div>
-	
-</div>
-	
 {% endblock %}

@@ -15,36 +15,59 @@
 		<!-- Title / Description -->
 		<title>{{ title }}</title>
 		<meta name="description" content="{{ description }}">
-		
-		<!-- Modernizr -->
-		<script type="text/javascript" src="/library/cardinal/js/vendor/modernizr-2.8.1.min.js{{ cachebust }}"> </script>
-		
-		<!-- Jive -->
+
 		<script type="text/javascript" src="/library/jivejs/jquery-2.1.0.min.js{{ cachebust }}"> </script>
-		<script type="text/javascript" src="/library/jivejs/jive.min.js{{ cachebust }}"> </script>
-		<link rel="stylesheet" href="/library/jivejs/jive.css{{ cachebust }}" type="text/css" />
 					
-		<!-- Cardinal -->
-		<link rel="stylesheet" href="/library/cardinal/css/main.css{{ cachebust }}" type="text/css" />
+		<!-- Bootstrap -->
+        <script type="text/javascript" src="/library/bootstrap/js/bootstrap.min.js{{ cachebust }}"> </script>
+		<link rel="stylesheet" href="/library/bootstrap/css/bootstrap.min.css{{ cachebust }}" type="text/css" />
 		
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="/library/font-awesome/css/font-awesome.min.css{{ cachebust }}" type="text/css" />
 
 		<!-- Global CSS -->
-		<link rel="stylesheet" href="/css/global.css{{ cachebust }}{{ cachebust }}" type="text/css" />
+		<link rel="stylesheet" href="/css/global.css{{ cachebust }}" type="text/css" />
 
+		<script type="text/javascript" src="/js/example.js{{ cachebust }}"> </script>
+
+        <!-- View Dependencies -->
 		{% block head %} {% endblock %}
 
 	</head>
 
 	<body>
 		
-		{% block nav %}
-		<nav id="global"></nav>
-		{% endblock %}	
+		<div class="row">
 
-		<div id="container">	
-			{% block container %}{% endblock %}
+			<div class="col-xs-2">
+
+				<nav id="global">
+		        
+		        	<a class="block" data-block="jumbotron"><i class="fa fa-2x fa-cube"></i> Hero</a>
+		        	<a class="block" data-block="tumblr"><i class="fa fa-2x fa-tumblr"></i> Tumblr</a>
+		        	<a class="block" data-block="youtube"><i class="fa fa-2x fa-youtube"></i> Youtube</a>
+		        	<a class="block" data-block="instagram"><i class="fa fa-2x fa-instagram"></i> Instagram</a>
+		 
+		        </nav>
+
+	        </div>
+
+	        <div class="col-xs-10">
+	        	{% block container %}{% endblock %}
+	        </div>
+
+        </div>
+
+		<div id="block-templates">
+
+			{% include "Jumbotron.html" %}
+
+			{% include "Tumblr.html" %}
+
+			{% include "Youtube.html" %}
+
+			{% include "Instagram.html" %}
+			
 		</div>
 
 	</body>

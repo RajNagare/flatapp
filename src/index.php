@@ -14,12 +14,14 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
 
+// we are using the CLI
 if($CLI) {
 	
 	// allow us to 
 	define('ROOT_PATH', $argv[1] );
 	define('APP_PATH', "../app" );
 	
+// accessing via HTTP requrest 
 } else {
 	
 	// Set Root and App path
@@ -34,6 +36,7 @@ define('LIBRARY_PATH', ROOT_PATH . "/library" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
 define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
 
+// if we aren't on the CLI
 if(!$CLI) {
 	
 	// Require Session

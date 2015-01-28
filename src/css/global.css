@@ -1,54 +1,37 @@
+/* Global CSS 
+ * 
+ * Application wide styles
+ *
+*/
+
 body {
 	font-family:Arial;
-
-	font-size:0.75rem;
 }
 
 .Error404 {
 	text-align: center;
 }
 
-section{
-	padding:2rem;
+nav#global {
+    position: fixed;
+    padding:1rem;
+    background:rgba(0,0,0,0.75);
 }
 
-span {
-	color:#39c;
+nav#global a {
+    color:#FFF;
+    display: block;
+    padding:1rem;
+    border:1px solid rgba(0,0,0,0);
 }
 
-section h1 {
-	margin:0;
-	padding:0;
-	font-size:2rem;
+nav#global a:hover {
+    border:1px solid #FFF;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
-section {
-	border-top:1px dashed #EEE;
-	border-bottom:1px dashed #EEE;
+nav#global a i  {
+    vertical-align: middle;
+    margin-right:5px;
 }
-
-section + section {
-	border-top:none;
-}
-
-
-div.grid {
-	padding:2rem; 
-}
-
-div.grid h3 {
-	color:#666;
-	margin:0;
-}
-
-ul {
-	padding:1rem 0;
-	list-style: none;
-	list-style-position:outside;
-}
-
-ul li {
-	margin-bottom:0.5rem;
-}
-
-

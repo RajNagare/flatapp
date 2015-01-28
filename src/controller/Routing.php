@@ -3,10 +3,10 @@
  * Routing Controller
  * 
  * Try figure out what route the user is passing
- * If we have a controller/{$_ROUTE}.php, use it
- * 		If we have a views/{$_ROUTE}.html, use it
- * Else if we have inline routes if you're lazy
+ * If we have a view/{$_ROUTE}.hmtl, set as view
+ * 		If we have a controller/{$_ROUTE}.php, execute controller logic
  * Else 404 ya boi
+ * Render view with data and respond
  * 
  */
 
