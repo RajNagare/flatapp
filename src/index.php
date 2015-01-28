@@ -14,8 +14,20 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
 
-// Set Root and App path
-define('ROOT_PATH', getcwd() );
+
+
+if($CLI) {
+
+	// allow us to 
+	define('ROOT_PATH', $argv[1] );
+
+} else {
+
+	// Set Root and App path
+	define('ROOT_PATH', getcwd() );
+
+}
+
 define('APP_PATH', "../app" );
 
 // Paths

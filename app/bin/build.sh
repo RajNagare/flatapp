@@ -24,12 +24,12 @@ ViewManifest="$BuildDirectory/viewManifest.txt";
 
 # CLI Display
 echo -e "${header}";
-echo "••••••••••••••••••••••••••••••••••••••••••••";
-echo " GUS > Building App $BuildDirectory"; 
+echo "------------------------------------------------------";
+echo " FlatApp > Building App $BuildDirectory"; 
 echo ""; 
 echo " Log located at:";
 echo " $(pwd)/$BuildLog"; 
-echo -e "••••••••••••••••••••••••••••••••••••••••••••${resetColor}"; 
+echo -e "------------------------------------------------------${resetColor}"; 
 echo  "";
 
 # Does that build directory exist?
@@ -133,9 +133,9 @@ if [ "$2" == "deploy" ]; then
 	ln -s $BuildDirectory web;
 
 	echo -e "${footer}";
-	echo "••••••••••••••••••••••••••••••••••••••••••••";
+	echo "------------------------------------------------------";
 	echo "Build deployed $BuildDirectory > web/!";
-	echo -e "••••••••••••••••••••••••••••••••••••••••••••${resetColor}";
+	echo -e "------------------------------------------------------${resetColor}";
 
 fi
 
@@ -150,10 +150,10 @@ if [ "$2" == "zip" ]; then
 	zip -r $BuildDirectory.zip $BuildDirectory >> $BuildLog;
 		
 	echo -e "${footer}";
-	echo "••••••••••••••••••••••••••••••••••••••••••••";
+	echo "------------------------------------------------------";
 	echo "Build compressed:";
 	du -h $BuildDirectory.zip;
-	echo -e "••••••••••••••••••••••••••••••••••••••••••••${resetColor}";
+	echo -e "------------------------------------------------------${resetColor}";
 
 fi
 
