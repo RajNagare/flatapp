@@ -75,37 +75,28 @@ while read viewName; do
 	echo "$viewName" >> $BuildLog;
 	
 	# Rendering with PHP (twig)
-	php src/index.php $(pwd)/src $viewName > $BuildDirectory/$viewName.html
+	php web/index.php $(pwd)/web $viewName > $BuildDirectory/$viewName
 	
-	# TODO FIXME
-	# Update links to point to local html files
-	while read linkName; do
-		sed -i "s/\/$linkName\"/$linkName\.html\"/g" $BuildDirectory/$viewName.html;
-	done <$ViewManifest
+	# Make all <script> src attributes a local include (remove the /)
+	sed -i 's/src="\/js/src="js/g' $BuildDirectory/$viewName;
+
+	# Make all <style> href attributes a local include (remove the /)
+	sed -i 's/href="\//href="/g' $BuildDirectory/$viewName;
 	
-	#Make JS include local
-	sed -i 's/src="\/js/src="js/g' $BuildDirectory/$viewName.html;
+	# Make all img attributes a local include (remove the /)
+	sed -i 's/\/img/img/g' $BuildDirectory/$viewName;
 	
-	#Make CSS include local
-	sed -i 's/href="\/css/href="css/g' $BuildDirectory/$viewName.html;
-	
-	#Make Image include local
-	sed -i 's/src="\/img/src="img/g' $BuildDirectory/$viewName.html;
-	
-	#Make Image include local
-	sed -i "s/url('\/img/url('img/g" $BuildDirectory/$viewName.html;
-	
-	#Make Lib include local
-	sed -i 's/\/library/library/g' $BuildDirectory/$viewName.html;
+	# Remove the / from  library includes
+	sed -i 's/\/library/library/g' $BuildDirectory/$viewName;
 	
 done <$ViewManifest
 
 # Copy CSS
 echo "Duplicating CSS..."; echo "";
-rsync -qav --exclude=".git/*" src/css/ $BuildDirectory/css/;
+rsync -qav --exclude=".git/*" web/css/ $BuildDirectory/css/;
 
 #Update CSS links to be local
-sed -i "s/url('\/img/url('\.\.\/img/g" $BuildDirectory/css/*.css;
+sed -i "s/\/img/..\/img/g" $BuildDirectory/css/*.css;
 
 # Copy JS
 echo "Duplicating JS..."; echo "";
