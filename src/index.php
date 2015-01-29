@@ -1,11 +1,8 @@
 <?php
 /*/
- * Gus - the web app kickstarter
+ * FlatApp | Index
  * 
- * Welcome to the index file! Here you will find 
- * application globals configs and dependencies.
- * 
- * !! Make sure app/log/ and app/cache/ are apache writable
+ * Main entry point for the development harness. 
  * 
 */
 
@@ -14,23 +11,11 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
 
-
-
-if($CLI) {
-
-	// allow us to 
-	define('ROOT_PATH', $argv[1] );
-
-} else {
-
-	// Set Root and App path
-	define('ROOT_PATH', getcwd() );
-
-}
-
-define('APP_PATH', "../app" );
+// If we are using the CLI, use the first argument else use current working dir
+define('ROOT_PATH', ( $CLI ? $argv[1] : getcwd() ) ) ; 
 
 // Paths
+define('APP_PATH', "../app" );
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
 define('LIBRARY_PATH', ROOT_PATH . "/library" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
@@ -54,7 +39,8 @@ $Twig = new Twig_Environment($loader, array(
  */
 $twigVars = array();
 
-$twigVars["theme"] = "default";
+// Theme
+$twigVars["theme"] = ( $_GET['theme'] ? $_GET['theme'] : "default" );
 
 // cache busting for js and css dependencies 
 $twigVars["cachebust"] = "?".date("Ymd");
