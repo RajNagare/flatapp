@@ -3,13 +3,14 @@
 echo "Welcome to FlatApp! We're going to install some dependecies to setup the project";
 echo "";
 
-composer install twig
+echo "Installing Composer dependecies...";
+echo "";
+composer install
 
-bower install jquery
-bower install bootstrap
-bower install fontawesome
+echo "Installing Bower dependecies...";
+echo "";
 
-unlink setup
+bower install
 
 echo "";
 echo "Project setup complete!"

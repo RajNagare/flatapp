@@ -1,4 +1,4 @@
 app/logs/*
 app/cache/*/
 src/bower/*/
-vendors/*/
+src/vendors/*/
