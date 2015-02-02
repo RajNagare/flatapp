@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#Colors
-success='\e[0;32m'
-resetColor='\e[0m'
-header='\e[45m'
-footer='\e[0;30m\e[43m'
-
 # Current Date
 CurrentDate=$(date +"%Y-%m-%d");
 
@@ -23,13 +17,13 @@ Views=src/views/*.html
 ViewManifest="$BuildDirectory/viewManifest.txt";
 
 # CLI Display
-echo -e "${header}";
+echo "";
 echo "------------------------------------------------------";
 echo " FlatApp > Building App $BuildDirectory"; 
 echo ""; 
 echo " Log located at:";
 echo " $(pwd)/$BuildLog"; 
-echo -e "------------------------------------------------------${resetColor}"; 
+echo -e "------------------------------------------------------"; 
 echo  "";
 
 # Does that build directory exist?
@@ -73,21 +67,27 @@ echo "" >> $BuildLog;
 while read viewName; do
 
 	echo "$viewName" >> $BuildLog;
-	
+
 	# Rendering with PHP (twig)
-	php web/index.php $(pwd)/web $viewName > $BuildDirectory/$viewName
+	php web/index.php $(pwd)/web $viewName > $BuildDirectory/$viewName.html
+
+	# TODO FIXME
+	# Update links to point to local html files
+	while read linkName; do
+		sed -i "s/\/$linkName\"/$linkName\.html\"/g" $BuildDirectory/$viewName.html;
+	done <$ViewManifest
 	
 	# Make all <script> src attributes a local include (remove the /)
-	sed -i 's/src="\/js/src="js/g' $BuildDirectory/$viewName;
+	sed -i 's/src="\/js/src="js/g' $BuildDirectory/$viewName.html;
 
 	# Make all <style> href attributes a local include (remove the /)
-	sed -i 's/href="\//href="/g' $BuildDirectory/$viewName;
+	sed -i 's/href="\//href="/g' $BuildDirectory/$viewName.html;
 	
 	# Make all img attributes a local include (remove the /)
-	sed -i 's/\/img/img/g' $BuildDirectory/$viewName;
+	sed -i 's/\/img/img/g' $BuildDirectory/$viewName.html;
 	
 	# Remove the / from  library includes
-	sed -i 's/\/library/library/g' $BuildDirectory/$viewName;
+	sed -i 's/\/library/library/g' $BuildDirectory/$viewName.html; 
 	
 done <$ViewManifest
 
@@ -112,43 +112,5 @@ rsync -qav --exclude=".git/*" --exclude="twig/" src/library/ $BuildDirectory/lib
 
 echo "Build generated at $BuildDirectory";
 
-# IF deploy is specified as build
-
-if [ "$2" == "deploy" ]; then
-
-	echo "" >> $BuildLog;
-	echo "DEPLOYING" >> $BuildLog;
-	echo "" >> $BuildLog;
-		
-	unlink web;
-	ln -s $BuildDirectory web;
-
-	echo -e "${footer}";
-	echo "------------------------------------------------------";
-	echo "Build deployed $BuildDirectory > web/!";
-	echo -e "------------------------------------------------------${resetColor}";
-
-fi
-
-# IF zip is specified as build
-if [ "$2" == "zip" ]; then
-
-	echo "" >> $BuildLog;
-	echo "COMPRESSING" >> $BuildLog;
-	echo "" >> $BuildLog;
-	
-	# ZIP File 
-	zip -r $BuildDirectory.zip $BuildDirectory >> $BuildLog;
-		
-	echo -e "${footer}";
-	echo "------------------------------------------------------";
-	echo "Build compressed:";
-	du -h $BuildDirectory.zip;
-	echo -e "------------------------------------------------------${resetColor}";
-
-fi
-
-echo -e "${success}";
+echo "";
 echo "Build complete!"; 
-
-echo -e "${resetColor}";
