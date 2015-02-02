@@ -17,12 +17,12 @@ define('ROOT_PATH', ( $CLI ? $argv[1] : getcwd() ) ) ;
 // Paths
 define('APP_PATH', "../app" );
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
-define('LIBRARY_PATH', ROOT_PATH . "/library" );
+define('VENDOR_PATH', "../vendor" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
 define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
  
 // Require Twig Dependencies
-require_once LIBRARY_PATH . "/twig/lib/Twig/Autoloader.php";
+require_once VENDOR_PATH . "/twig/twig/lib/Twig/Autoloader.php";
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(VIEWS_PATH);
 
