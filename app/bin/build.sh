@@ -87,7 +87,7 @@ while read viewName; do
 	sed -i 's/\/img/img/g' $BuildDirectory/$viewName.html;
 	
 	# Remove the / from  library includes
-	sed -i 's/\/library/library/g' $BuildDirectory/$viewName.html; 
+	sed -i 's/\/bower/bowe/g' $BuildDirectory/$viewName.html; 
 	
 done <$ViewManifest
 
@@ -107,8 +107,16 @@ echo "Duplicating Images..."; echo "";
 rsync -qav --exclude=".git/*" src/img/ $BuildDirectory/img/;
 
 # Copy Libs
-echo "Duplicating libaraies..."; echo "";
-rsync -qav --exclude=".git/*" --exclude="twig/" src/library/ $BuildDirectory/library/;
+echo "Duplicating dependencies..."; echo "";
+rsync -qav --exclude=".git/*"  src/bower/ $BuildDirectory/bower/;
+
+#Create robots.txt
+echo "Creating robots.txt..."; echo "";
+printf "User-agent: * \nAllow: /" >> $BuildDirectory/robots.txt;
+
+# Humans.txt 
+echo "Dulicating humans.txt..."; echo "";
+cp src/humans.txt $BuildDirectory/humans.txt
 
 echo "Build generated at $BuildDirectory";
 

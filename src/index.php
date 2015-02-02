@@ -14,10 +14,11 @@ $CLI = ( isset($argv) && $argv[1] ? true : false );
 // If we are using the CLI, use the first argument else use current working dir
 define('ROOT_PATH', ( $CLI ? $argv[1] : getcwd() ) ) ; 
 
+define('VENDOR_PATH', ( $CLI ? "vendor" : "../vendor" )  ) ; 
+
 // Paths
 define('APP_PATH', "../app" );
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
-define('VENDOR_PATH', "../vendor" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
 define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
  

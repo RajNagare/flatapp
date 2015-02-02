@@ -1,0 +1,5 @@
+Hello human. Flat App is like the Terminator 1 of web applications. It went back in time from the future to kick ass.
+
+Team
+------
+Max Felker <max@bigroomstudios.com>
