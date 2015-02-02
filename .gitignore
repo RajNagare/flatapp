@@ -1,2 +1,3 @@
-app/logs/*
-templates/cache/*/
+app/logs/*/
+app/cache/*/
+src/bower/*/

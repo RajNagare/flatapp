@@ -1,0 +1,12 @@
+[Wed Jan 28 14:06:29 2015] [error] [client 24.97.51.246] Directory index forbidden by Options directive: /home/maxfelker/domains/flatapp.maxfelker.dev/web/
+[Wed Jan 28 14:08:02 2015] [error] [client 24.97.51.246] Directory index forbidden by Options directive: /home/maxfelker/domains/flatapp.maxfelker.dev/web/
+[Wed Jan 28 14:08:04 2015] [error] [client 24.97.51.246] Directory index forbidden by Options directive: /home/maxfelker/domains/flatapp.maxfelker.dev/web/
+[Wed Jan 28 14:11:48 2015] [error] [client 24.97.51.246] script '/home/maxfelker/domains/flatapp.maxfelker.dev/web/index.php' not found or unable to stat
+[Wed Jan 28 14:12:05 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/src
+[Wed Jan 28 14:23:55 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/zip
+[Wed Jan 28 14:24:00 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/zip
+[Wed Jan 28 14:24:06 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/zip
+[Wed Jan 28 18:29:32 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/theme, referer: http://helloflatapp.com/
+[Thu Jan 29 11:06:52 2015] [error] [client 24.97.51.246] Directory index forbidden by Options directive: /home/maxfelker/domains/flatapp.maxfelker.dev/web/
+[Thu Jan 29 11:07:45 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/theme, referer: http://helloflatapp.com/
+[Thu Jan 29 11:07:51 2015] [error] [client 24.97.51.246] File does not exist: /home/maxfelker/domains/flatapp.maxfelker.dev/web/theme, referer: http://helloflatapp.com/404
