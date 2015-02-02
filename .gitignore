@@ -1,4 +1,5 @@
 app/logs/*
 app/cache/*/
 src/bower/*/
-vendors/*/
+vendor/*/
+composer.lock
