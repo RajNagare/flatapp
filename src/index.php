@@ -21,6 +21,10 @@ define('APP_PATH', "../app" );
 define('CONTROLLER_PATH', ROOT_PATH . "/controller" );
 define('VIEWS_PATH', ROOT_PATH . "/views" );
 define('VIEWS_CACHE_PATH', APP_PATH . "/cache" );
+
+if( is_file( "../setup" ) ) {
+	die("You need to run `setup` on your command line");
+}
  
 // Require Twig Dependencies
 require_once VENDOR_PATH . "/twig/twig/lib/Twig/Autoloader.php";
