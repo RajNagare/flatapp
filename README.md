@@ -1,7 +1,7 @@
 FLAT APP
 ===
 
-### Requirements for Development Environment**:
+### Requirements for Development Environment
 - Apache 2.2.3 +
 - PHP 5.2.4 + 
 - Bower
