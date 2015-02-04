@@ -1,3 +1,4 @@
 {
-	"directory": "src/bower/"
+	"directory": "bower/",
+	"cwd": "src/themes/default"
 }

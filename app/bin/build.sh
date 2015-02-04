@@ -103,7 +103,7 @@ echo "Duplicating CSS..."; echo "";
 rsync -qav --exclude=".git/*" $ThemeDirectory/css/ $BuildDirectory/css/;
 
 #Update CSS links to be local
-sed -i "s/\/img/..\/img/g" $BuildDirectory/css/*.css;
+#sed -i "s/\/img/..\/img/g" $BuildDirectory/css/*.css;
 
 # Copy JS
 echo "Duplicating JS..."; echo "";
@@ -115,7 +115,7 @@ rsync -qav --exclude=".git/*" $ThemeDirectory/img/ $BuildDirectory/img/;
 
 # Copy Bower Dependecies
 echo "Duplicating bower dependencies..."; echo "";
-rsync -qav --exclude=".git/*"  src/bower/ $BuildDirectory/bower/;
+rsync -qav --exclude=".git/*"  $ThemeDirectory/bower/ $BuildDirectory/bower/;
 
 #Create robots.txt
 echo "Creating robots.txt..."; echo "";

@@ -1,5 +1,5 @@
 app/logs/*
 app/cache/*/
-src/bower/*/
+src/themes/*/bower/
 vendor/
 composer.lock

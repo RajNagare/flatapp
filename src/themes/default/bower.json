@@ -1,11 +1,11 @@
 {
-  "name": "FlatApp",
+  "name": "FlatApp Default Theme",
   "version": "1.0.0",
-  "homepage": "https://github.com/maxatbrs/flatapp",
+  "homepage": "https://github.com/maxatbrs/flatapp/tree/master/src/themes/default",
   "authors": [
     "Max Felker <max@bigroomstudios.com>"
   ],
-  "description": "Web apps for humans",
+  "description": "Default Theme for the FlatApp",
   "license": "MIT",
   "ignore": [
     "**/.*",
