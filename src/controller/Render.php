@@ -1,9 +1,8 @@
 <?php
 /*
- * Publish
+ * Render Controller
  * 
- * This handles the public facing view, generally a home page
- * 
+ * Handles the theming and twig setup
  */
 
 $theme = "default";

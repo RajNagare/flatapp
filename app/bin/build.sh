@@ -13,7 +13,8 @@ fi
 BuildLog="$BuildDirectory/build.log";
 
 # Views
-ThemeDirectory=src/themes/default
+Theme="default"
+ThemeDirectory=src/themes/$Theme
 Views=$ThemeDirectory/*.html
 ViewManifest="$BuildDirectory/viewManifest.txt";
 
@@ -89,6 +90,9 @@ while read viewName; do
 	
 	# Remove the / from  library includes
 	#sed -i 's/\/bower/bower/g' $BuildDirectory/$viewName.html; 
+
+	# Remove themes/{themeName} from web dependecies
+	sed -i "s/\/themes\/$Theme//g" $BuildDirectory/$viewName.html; 
 	
 done <$ViewManifest
 

@@ -1,9 +1,5 @@
-
+<!-- InstagramBlock -->
 <div class="block block-template instagram">
-
-
-
-    <h2><i class="fa fa-instagram"></i></a> INSTAGRAM Feed</h2>
 
     <script type="text/javascript" src="//maxfelker.com/js/instafeed.min.js{{ cachebust }}"></script>
 
@@ -15,7 +11,7 @@
             userId:201949487,
             accessToken: '201949487.467ede5.d4faf73ba164402da7294b42aa7779af',
             resolution: 'standard_resolution',   
-            limit:20,
+            limit:1,
             {% verbatim %}
             template: '<div class="grid-item one-whole instagramPicture"><div class="instagramOverlay"><span class="instagramCaption">{{caption}}<i class="fa fa-heart"></i> {{likes}}</span><a  target="_blank" href="{{link}}"><i class="fa fa-share"></i></a></div><img title="Max Felker - {{caption}}" alt="Max Felker - {{caption}}" src="{{image}}" /></div>'
        		{% endverbatim %}
@@ -28,3 +24,4 @@
     <div class="grid grid-gutter-none" id="instafeed"></div>    
 	
 </div>
+<!-- /InstagramBlock -->
