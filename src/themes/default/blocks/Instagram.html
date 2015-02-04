@@ -1,5 +1,5 @@
 <!-- InstagramBlock -->
-<div class="block block-template instagram">
+<div class="block block-template block-instagram">
 
     <script type="text/javascript" src="//maxfelker.com/js/instafeed.min.js{{ cachebust }}"></script>
 
@@ -11,9 +11,9 @@
             userId:201949487,
             accessToken: '201949487.467ede5.d4faf73ba164402da7294b42aa7779af',
             resolution: 'standard_resolution',   
-            limit:1,
+            limit:4,
             {% verbatim %}
-            template: '<div class="grid-item one-whole instagramPicture"><div class="instagramOverlay"><span class="instagramCaption">{{caption}}<i class="fa fa-heart"></i> {{likes}}</span><a  target="_blank" href="{{link}}"><i class="fa fa-share"></i></a></div><img title="Max Felker - {{caption}}" alt="Max Felker - {{caption}}" src="{{image}}" /></div>'
+            template: '<div class="grid-item one-half medium-one-half instagramPicture"><div class="instagramOverlay"> <a target="_blank" href="{{link}}"> <i class="fa fa-2x fa-instagram"></i> <i class="fa fa-2x fa-heart"></i> {{likes}} </div><img title="{{caption}}" alt="{{caption}}" src="{{image}}" /></div>'
        		{% endverbatim %}
         });
         
