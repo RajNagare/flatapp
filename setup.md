@@ -29,12 +29,12 @@ Make sure to add this to your apache VHOST block configuration and restart the s
 
     <VirtualHost *:80>
         ServerAdmin your@email.com
-        DocumentRoot /path/to/flat/web
+        DocumentRoot /path/to/myapp/web
         ServerName dev.myapp.com
-        ErrorLog /path/to/flat/app/logs/error.log
-        CustomLog /path/to/flat/app/logs/access_log common
+        ErrorLog /path/to/myapp/app/logs/error.log
+        CustomLog /path/to/myapp/app/logs/access_log common
         DirectoryIndex index index.php index.html
-        <Directory /path/to/flat/web>
+        <Directory /path/to/myapp/web>
             Options +Indexes IncludesNOEXEC FollowSymLinks
             allow from all
             AllowOverride All
