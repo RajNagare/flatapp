@@ -3,6 +3,14 @@
 BuildDirectory=$1;
 BuildLog="$BuildDirectory/build.log";
 
+# CLI Display
+echo "";
+echo "------------------------------------------------------";
+echo " Deploying App $BuildDirectory"; 
+echo ""; 
+echo "------------------------------------------------------"; 
+echo  "";
+
 # S3 Deployment
 if [ "$2" == "s3" ]; then
 
