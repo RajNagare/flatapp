@@ -9,10 +9,7 @@
 // Report Errors
 error_reporting(E_ERROR | E_WARNING | E_PARSE); 
 
-// Has setup run yet?
-if( is_file( "../setup" ) ) {
-	die("You need to run `setup` on your command line");
-}
+
  
 // are we routing via the CLI?
 $CLI = ( isset($argv) && $argv[1] ? true : false );
@@ -22,6 +19,12 @@ define('ROOT_PATH', ( $CLI ? $argv[1] : getcwd() ) ) ;
 
 // If we are using the CLI, thr vendor path is local, either go up a directory
 define('VENDOR_PATH', ( $CLI ? "vendor" : "../vendor" )  ) ; 
+
+// Has setup run yet? If vendors is not there, probably not
+
+if( !is_dir(VENDOR_PATH) ) {
+	die("You need to run `setup` on your command line");
+}
 
 // Paths
 define('APP_PATH', "../app" );
